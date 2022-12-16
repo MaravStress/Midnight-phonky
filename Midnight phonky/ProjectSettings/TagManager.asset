@@ -3,15 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemigo 1
+  - Enemigo 2
+  - Enemigo 3
+  - 'Enemigo 4 '
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - players
   - Water
   - UI
-  - 
+  - Estaciones
   - 
   - 
   - 

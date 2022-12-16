@@ -5,7 +5,7 @@ using Cinemachine;
 
 public class Moto : MonoBehaviour
 {
-    Controles c;
+    
    public  Rigidbody rg;
     [Header("suspencion")]
     public float fuerza;
@@ -28,8 +28,6 @@ public class Moto : MonoBehaviour
     public int rango_accelerado = 80;
     public CinemachineVirtualCamera camara;
     private void Awake() {
-        c = new Controles();
-        c.Enable();
         rg.centerOfMass = centro_de_gravedad;
     }
 
@@ -54,8 +52,12 @@ public class Moto : MonoBehaviour
             v.y = 0;
             camara.m_Lens.FieldOfView = rango_normal+(v.magnitude* (rango_accelerado-rango_normal)) /VelocidadMax;
     }
+    Vector2 m;
+    public void Muevete(Vector2 move){ // control
+        m = move;
+    }
     private void FixedUpdate() {
-        Vector2 m = c.Player.Movimiento.ReadValue<Vector2>(); // controles
+       
     // rotacion
     transform.Rotate(new Vector3(0,m.x,0) * Giro ); // giro
             
