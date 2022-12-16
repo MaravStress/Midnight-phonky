@@ -50,7 +50,7 @@ public class Moto : MonoBehaviour
     private void Update() {
         Vector3 v = rg.velocity;
             v.y = 0;
-            camara.m_Lens.FieldOfView = rango_normal+(v.magnitude* (rango_accelerado-rango_normal)) /VelocidadMax;
+           if(camara != null) camara.m_Lens.FieldOfView = rango_normal+(v.magnitude* (rango_accelerado-rango_normal)) /VelocidadMax;
     }
     Vector2 m;
     public void Muevete(Vector2 move){ // control

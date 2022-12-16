@@ -2075,7 +2075,7 @@ MonoBehaviour:
   Giro: 1
   rango_normal: 60
   rango_accelerado: 70
-  camara: {fileID: 806540266}
+  camara: {fileID: 0}
 --- !u!65 &50084231
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2120,6 +2120,8 @@ MonoBehaviour:
   moto: {fileID: 50084230}
   nav: {fileID: 1981894129}
   rangoMax: 3
+  rotacion: 2
+  move: {x: 0, y: 0, z: 0}
 --- !u!43 &74963760
 Mesh:
   m_ObjectHideFlags: 0
@@ -3051,7 +3053,7 @@ MonoBehaviour:
   Giro: 1
   rango_normal: 60
   rango_accelerado: 70
-  camara: {fileID: 806540266}
+  camara: {fileID: 0}
 --- !u!65 &259740236
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3096,6 +3098,8 @@ MonoBehaviour:
   moto: {fileID: 259740235}
   nav: {fileID: 122277896}
   rangoMax: 3
+  rotacion: 2
+  move: {x: 0, y: 0, z: 0}
 --- !u!1 &263424811
 GameObject:
   m_ObjectHideFlags: 0
@@ -3159,7 +3163,7 @@ MonoBehaviour:
   Giro: 1
   rango_normal: 60
   rango_accelerado: 70
-  camara: {fileID: 806540266}
+  camara: {fileID: 0}
 --- !u!65 &263424814
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3204,6 +3208,8 @@ MonoBehaviour:
   moto: {fileID: 263424813}
   nav: {fileID: 2059607040}
   rangoMax: 3
+  rotacion: 2
+  move: {x: 0, y: 0, z: 0}
 --- !u!43 &312588345
 Mesh:
   m_ObjectHideFlags: 0
@@ -8750,7 +8756,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806540264}
-  m_LocalRotation: {x: 0.38268355, y: 0.000000027533757, z: -0.000000011404859, w: 0.9238795}
+  m_LocalRotation: {x: 0.38268352, y: -1.5059225e-15, z: -4.1679185e-16, w: 0.9238795}
   m_LocalPosition: {x: 3.4, y: 8.351, z: -64.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10403,7 +10409,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268355, y: 0.000000027533757, z: -0.000000011404859, w: 0.9238795}
+  m_LocalRotation: {x: 0.38268352, y: -1.5059225e-15, z: -4.1679185e-16, w: 0.9238795}
   m_LocalPosition: {x: 3.4, y: 8.351, z: -64.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14981,7 +14987,7 @@ MonoBehaviour:
   Giro: 1
   rango_normal: 60
   rango_accelerado: 70
-  camara: {fileID: 806540266}
+  camara: {fileID: 0}
 --- !u!65 &1604354984
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15026,6 +15032,8 @@ MonoBehaviour:
   moto: {fileID: 1604354983}
   nav: {fileID: 893072465}
   rangoMax: 3
+  rotacion: 2
+  move: {x: 0, y: 0, z: 0}
 --- !u!43 &1625714571
 Mesh:
   m_ObjectHideFlags: 0

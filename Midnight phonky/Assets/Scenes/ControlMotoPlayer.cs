@@ -12,6 +12,7 @@ public class ControlMotoPlayer : MonoBehaviour
         c.Enable();
     }
     void Update() {
+        if (c == null) return;
         moto.Muevete(c.Player.Movimiento.ReadValue<Vector2>());
     }
 }
