@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: cb3bfb75fc290b34b9770e84487bff36, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 3347c777363ba9f4a926627fcf2a4416, type: 2}
 --- !u!1 &9142141
 GameObject:
   m_ObjectHideFlags: 0
@@ -2121,7 +2121,7 @@ MonoBehaviour:
   nav: {fileID: 1981894129}
   rangoMax: 3
   speed: 1
-  giro: 3
+  giro: 1
   move: {x: 0, y: 0}
 --- !u!43 &74963760
 Mesh:
@@ -3100,7 +3100,7 @@ MonoBehaviour:
   nav: {fileID: 122277896}
   rangoMax: 6
   speed: 1
-  giro: 3
+  giro: 1
   move: {x: 0, y: 0}
 --- !u!1 &263424811
 GameObject:
@@ -3211,7 +3211,7 @@ MonoBehaviour:
   nav: {fileID: 2059607040}
   rangoMax: 2
   speed: 1
-  giro: 3
+  giro: 1
   move: {x: 0, y: 0}
 --- !u!43 &312588345
 Mesh:
@@ -3463,7 +3463,8 @@ MonoBehaviour:
   - {fileID: 844856196}
   - {fileID: 1886296746}
   - {fileID: 1775791141}
-  radio: 5
+  radio: 8
+  ventaja: 0.65
   termina:
     m_PersistentCalls:
       m_Calls:
@@ -4201,7 +4202,7 @@ GameObject:
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 3
+  m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &517421811
@@ -8764,8 +8765,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806540264}
-  m_LocalRotation: {x: 0.38268352, y: -1.5059225e-15, z: -4.1679185e-16, w: 0.9238795}
-  m_LocalPosition: {x: 3.4, y: 8.351, z: -64.2}
+  m_LocalRotation: {x: 0.38268352, y: -0.000000027533757, z: 0.000000011404858, w: 0.9238795}
+  m_LocalPosition: {x: 134.19, y: 38.15, z: 22.130001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8791,8 +8792,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 956621644}
-  m_Follow: {fileID: 956621644}
+  m_LookAt: {fileID: 1604354982}
+  m_Follow: {fileID: 1604354982}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -10417,8 +10418,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.38268352, y: -1.5059225e-15, z: -4.1679185e-16, w: 0.9238795}
-  m_LocalPosition: {x: 3.4, y: 8.351, z: -64.2}
+  m_LocalRotation: {x: 0.38268352, y: -0.000000027533757, z: 0.000000011404858, w: 0.9238795}
+  m_LocalPosition: {x: 134.19, y: 38.15, z: 22.130001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14960,7 +14961,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1604354981}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 118.8, y: 9.7, z: -12.6}
+  m_LocalPosition: {x: 134.19, y: 28.15, z: 32.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -15022,7 +15023,7 @@ Rigidbody:
   m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &1604354986
@@ -15041,7 +15042,7 @@ MonoBehaviour:
   nav: {fileID: 893072465}
   rangoMax: 1
   speed: 1
-  giro: 3
+  giro: 1
   move: {x: 0, y: 0}
 --- !u!43 &1625714571
 Mesh:

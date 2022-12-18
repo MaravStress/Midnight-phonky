@@ -18,8 +18,8 @@ public class IA_ControlMoto : MonoBehaviour
         if (Vector3.Distance(transform.position, nav.transform.position) > rangoMax)
             nav.transform.position = transform.position;
         
-        move.x = Vector3.Cross(transform.forward, nav.transform.forward).y * giro;
-        move.y = ((180 - Vector3.Angle(transform.forward, nav.transform.forward))/360)*speed;
+        move.x = Vector3.Cross(transform.forward, nav.transform.forward).y *10* giro;
+        move.y = speed;//((180 - Vector3.Angle(transform.forward, nav.transform.forward))/360)*speed;
         moto.Muevete(move);
     }
 }

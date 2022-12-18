@@ -16,6 +16,9 @@ public class MasterCarrera : MonoBehaviour
     public estacion[] estaciones;
     
     public float radio;
+    [Range(0,1)]
+    public float ventaja = 3;
+
     [Header("evetos")]
     public UnityEvent termina;
     void Start() {
@@ -34,7 +37,7 @@ public class MasterCarrera : MonoBehaviour
                 item.IA.Destino(estaciones[0].transform.position);
             }
         }
-        InvokeRepeating("posicion",0.1f,0.1f);
+        InvokeRepeating("posicion",0.5f,0.5f);
     }
     public void posicion(){    
     // ordena por estaciones
@@ -58,12 +61,20 @@ public class MasterCarrera : MonoBehaviour
     // ordena por distancia
         foreach (var item in jugadores)
         {
+            ordenaxdistacia();
+            veloMax(item);
+        }
+        
+    }
+    void ordenaxdistacia(){
+        foreach (var item in jugadores)
+        {
            
             foreach (var item2 in jugadores)
             {
-                if(item.posicion == item2.posicion && item.Player != item2.Player){
-                    if(distancia(item) > distancia(item2)){
-                        Debug.Log(item.ToString());
+                if(item.posicion == item2.posicion && item.Player != item2.Player ){
+                    if(distancia(item) > distancia(item2) || item.estaciones < item2.estaciones ){
+//                        Debug.Log(item.ToString());
                         item.posicion ++;
 
                     }else{
@@ -80,6 +91,7 @@ public class MasterCarrera : MonoBehaviour
      return Vector3.Distance(p.Player.transform.position,estaciones[p.estaciones].transform.position) ;
     }
     public void Entro(player p){
+        posicion();
         //Debug.Log("entro");
         if(p.estaciones >=  estaciones.Length-1){
             if(p.IA == null) termina.Invoke();
@@ -93,6 +105,15 @@ public class MasterCarrera : MonoBehaviour
         }
         
 
+    }
+
+
+    public void veloMax(player p){
+        float x = (p.posicion); // (jugadores.Length+1)  * ventaja
+        float v  = x/5f; // regla de 3
+        
+        float vv = 1 - v;
+        if (p.IA != null)  p.IA.speed = 1 - (vv * ventaja) ;
     }
     
 }
