@@ -1,41 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
 public class MasterCarrera : MonoBehaviour
 {
-    [System.Serializable]
-    public class player{
-        public GameObject Player;
-        public int estaciones;
-        public IA_ControlMoto IA;
-        public int posicion;
-    }
+    public MasterGame MG;
     public player[] jugadores;
-    public estacion[] estaciones;
+
+    public GameObject estacionesFather;
+    public Transform[] IniPosiciones;
+    estacion[] estaciones;
     
     public float radio;
     [Range(0,1)]
     public float ventaja = 3;
 
-    [Header("evetos")]
-    public UnityEvent termina;
+    
     void Start() {
-        estaciones = GetComponentsInChildren<estacion>();
-        estaciones = GetComponentsInChildren<estacion>();
+        estaciones = estacionesFather.GetComponentsInChildren<estacion>();
+        int i = 0;
         foreach (var item in estaciones)
         {
+            item.soy = i;
+            i++;
             item.colider = item.GetComponent<SphereCollider>();
             item.master = GetComponent<MasterCarrera>();
             item.colider.radius = radio;
             item.colider.isTrigger = true;
+             ;
         }
+        
+        i = 0;
         foreach (var item in jugadores)
         {
             if (item.IA != null) {
                 item.IA.Destino(estaciones[0].transform.position);
             }
+            senales(item);
+            item.Player.transform.SetPositionAndRotation(IniPosiciones[i].position,IniPosiciones[i].rotation);
+            i++;
         }
         InvokeRepeating("posicion",0.5f,0.5f);
     }
@@ -94,7 +97,9 @@ public class MasterCarrera : MonoBehaviour
         posicion();
         //Debug.Log("entro");
         if(p.estaciones >=  estaciones.Length-1){
-            if(p.IA == null) termina.Invoke();
+            if(p.IA == null){
+                MG.termino();
+            } 
             return;
         }
         if(Vector3.Distance(p.Player.transform.position,estaciones[p.estaciones].transform.position) < (radio*2)){
@@ -104,10 +109,37 @@ public class MasterCarrera : MonoBehaviour
             }
         }
         
+        senales(p);
 
     }
 
+    public void senales(player p){
+        if(p.IA == null){ // senales
+            for (int i = 0; i < estaciones.Length; i++)
+            {
+                if(i < p.estaciones){ // los que esten atras
+                       estaciones[i].senal.SetActive(false);
+                        estaciones[i].flecha.SetActive(false);
+                }
+                else if(i == p.estaciones){ // El punto
+                    estaciones[i].senal.SetActive(true);
+                    if(i < estaciones.Length-1){
+                        estaciones[i].flecha.SetActive(true);
+                        estaciones[i].flecha.gameObject.transform.LookAt(estaciones[i+1].gameObject.transform);
 
+                    }
+                }
+                else if(i+1 == p.estaciones){ // es siguiente
+                    estaciones[i].senal.SetActive(true);
+                    estaciones[i].flecha.SetActive(false);
+
+                }else{ // los que vienen
+                    estaciones[i].senal.SetActive(false);
+                    estaciones[i].flecha.SetActive(false);
+                }
+            }
+        }
+    }
     public void veloMax(player p){
         float x = (p.posicion); // (jugadores.Length+1)  * ventaja
         float v  = x/5f; // regla de 3
@@ -117,3 +149,10 @@ public class MasterCarrera : MonoBehaviour
     }
     
 }
+[System.Serializable]
+    public class player{
+        public GameObject Player;
+        public int estaciones;
+        public IA_ControlMoto IA;
+        public int posicion;
+    }
