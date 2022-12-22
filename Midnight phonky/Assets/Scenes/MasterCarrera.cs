@@ -18,29 +18,30 @@ public class MasterCarrera : MonoBehaviour
     
     void Start() {
         estaciones = estacionesFather.GetComponentsInChildren<estacion>();
-        int i = 0;
+        int ii = 0;
         foreach (var item in estaciones)
         {
-            item.soy = i;
-            i++;
+            item.soy = ii;
+            ii++;
             item.colider = item.GetComponent<SphereCollider>();
             item.master = GetComponent<MasterCarrera>();
             item.colider.radius = radio;
             item.colider.isTrigger = true;
-             ;
+             
         }
         
-        i = 0;
-        foreach (var item in jugadores)
+        for (int i = 0; i < jugadores.Length; i++)
         {
-            if (item.IA != null) {
-                item.IA.Destino(estaciones[0].transform.position);
+            if (jugadores[i].IA != null) {
+                jugadores[i].IA.Destino(estaciones[0].transform.position);
             }
-            senales(item);
-            item.Player.transform.SetPositionAndRotation(IniPosiciones[i].position,IniPosiciones[i].rotation);
-            i++;
+            
+            jugadores[i].Player.transform.SetPositionAndRotation(IniPosiciones[i].localPosition,IniPosiciones[i].localRotation);
+           
         }
+        
         InvokeRepeating("posicion",0.5f,0.5f);
+        senales();
     }
     public void posicion(){    
     // ordena por estaciones
@@ -105,16 +106,17 @@ public class MasterCarrera : MonoBehaviour
         if(Vector3.Distance(p.Player.transform.position,estaciones[p.estaciones].transform.position) < (radio*2)){
                 p.estaciones ++;
             if (p.IA != null){
-                p.IA.Destino(estaciones[p.estaciones].transform.position);
+                p.IA.Destino(estaciones[p.estaciones].transform.localPosition);
             }
         }
         
-        senales(p);
+        senales();
 
     }
 
-    public void senales(player p){
-        if(p.IA == null){ // senales
+    public void senales(){
+        player p = jugadores[0];
+        
             for (int i = 0; i < estaciones.Length; i++)
             {
                 if(i < p.estaciones){ // los que esten atras
@@ -138,7 +140,7 @@ public class MasterCarrera : MonoBehaviour
                     estaciones[i].flecha.SetActive(false);
                 }
             }
-        }
+        
     }
     public void veloMax(player p){
         float x = (p.posicion); // (jugadores.Length+1)  * ventaja
