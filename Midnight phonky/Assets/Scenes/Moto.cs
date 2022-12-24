@@ -17,6 +17,7 @@ public class Moto : MonoBehaviour
     public float drag;
 
     [Header("Movimiento")]
+    public bool activo;
     public float acceleracion = 10;
     public float VelocidadMax;
     public float Reversa = 10;
@@ -54,7 +55,7 @@ public class Moto : MonoBehaviour
     }
     Vector2 m;
     public void Muevete(Vector2 move){ // control
-        m = move;
+       if(activo) m = move;
     }
     private void FixedUpdate() {
        
@@ -92,12 +93,6 @@ public class Moto : MonoBehaviour
             rg.AddForce(transform.forward * m.y * acceleracion,ForceMode.Acceleration); // Acceleracion y retroceso
         }else
             rg.AddForce(transform.forward * m.y * Reversa,ForceMode.Acceleration);
-
-    
-    
-    
-    
-    
     }
 
     Vector3 Origen(Vector2 _offset){

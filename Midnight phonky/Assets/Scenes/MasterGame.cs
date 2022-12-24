@@ -7,6 +7,8 @@ public class MasterGame : MonoBehaviour
     public player[] jugadores;
     public GameObject[] Carreras;
     public GameObject CarreraActual;
+    [Header("Cosas dentro de carrea")]
+    public int contador = 3;
     public void termino(){
         Destroy(CarreraActual);
         foreach (var item in jugadores)
@@ -23,6 +25,28 @@ public class MasterGame : MonoBehaviour
         CarreraActual = Instantiate(Carreras[i],Vector3.zero,Quaternion.Euler(0,0,0));
         MasterCarrera mc = CarreraActual.GetComponent<MasterCarrera>();
         mc.MG = this.gameObject.GetComponent<MasterGame>(); 
-        mc.jugadores = jugadores;
+
+        foreach (var item in jugadores)
+        {
+            item.Player.GetComponent<Moto>().activo = false;
+            //item.Player.GetComponent<Moto>().rg.velocity = Vector3.zero;
+            //item.Player.GetComponent<Moto>().rg.rotation = Quaternion.Euler(0,0,0);
+            item.Player.GetComponent<Moto>().rg.WakeUp();
+        }
+        Invoke("inicio",contador);
+    }
+    void inicio(){
+        foreach (var item in jugadores)
+        {
+            item.Player.GetComponent<Moto>().activo = true;
+        }
     }
 }
+[System.Serializable]
+    public class player{
+        public GameObject Player;
+        public int estaciones;
+        public IA_ControlMoto IA;
+        public Transform ir;
+        public int posicion;
+    }

@@ -10,7 +10,7 @@ public class estacion : MonoBehaviour
     public GameObject senal,flecha;
     private void OnTriggerEnter(Collider other) {
         
-        foreach (var item in master.jugadores)
+        foreach (var item in master.MG.jugadores)
         {
             if(item.Player.CompareTag(other.tag)){
                 master.Entro(item);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class MasterCarrera : MonoBehaviour
 {
     public MasterGame MG;
-    public player[] jugadores;
+
 
     public GameObject estacionesFather;
     public Transform[] IniPosiciones;
@@ -18,25 +18,25 @@ public class MasterCarrera : MonoBehaviour
     
     void Start() {
         estaciones = estacionesFather.GetComponentsInChildren<estacion>();
-        int ii = 0;
-        foreach (var item in estaciones)
+
+        for (int i = 0; i < estaciones.Length; i++)
         {
-            item.soy = ii;
-            ii++;
+            estacion item = estaciones[i];
+            item.soy = i;
             item.colider = item.GetComponent<SphereCollider>();
             item.master = GetComponent<MasterCarrera>();
             item.colider.radius = radio;
             item.colider.isTrigger = true;
-             
         }
         
-        for (int i = 0; i < jugadores.Length; i++)
+        
+        for (int i = 0; i < MG.jugadores.Length; i++)
         {
-            if (jugadores[i].IA != null) {
-                jugadores[i].IA.Destino(estaciones[0].transform.position);
+            if (MG.jugadores[i].IA != null) {
+                MG.jugadores[i].IA.Destino(estaciones[0].transform.position);
             }
             
-            jugadores[i].Player.transform.SetPositionAndRotation(IniPosiciones[i].localPosition,IniPosiciones[i].localRotation);
+            MG.jugadores[i].Player.transform.SetPositionAndRotation(IniPosiciones[i].localPosition,IniPosiciones[i].localRotation);
            
         }
         
@@ -50,7 +50,7 @@ public class MasterCarrera : MonoBehaviour
             for (int i = estaciones.Length; i >= 0; i--)
             {
                  bool ubo = false;
-                foreach (var item in jugadores)
+                foreach (var item in MG.jugadores)
                 {
                     if(item.estaciones == i){
                         item.posicion = esDispo;
@@ -63,7 +63,7 @@ public class MasterCarrera : MonoBehaviour
                 }
             }
     // ordena por distancia
-        foreach (var item in jugadores)
+        foreach (var item in MG.jugadores)
         {
             ordenaxdistacia();
             veloMax(item);
@@ -71,10 +71,10 @@ public class MasterCarrera : MonoBehaviour
         
     }
     void ordenaxdistacia(){
-        foreach (var item in jugadores)
+        foreach (var item in MG.jugadores)
         {
            
-            foreach (var item2 in jugadores)
+            foreach (var item2 in MG.jugadores)
             {
                 if(item.posicion == item2.posicion && item.Player != item2.Player ){
                     if(distancia(item) > distancia(item2) || item.estaciones < item2.estaciones ){
@@ -107,6 +107,8 @@ public class MasterCarrera : MonoBehaviour
                 p.estaciones ++;
             if (p.IA != null){
                 p.IA.Destino(estaciones[p.estaciones].transform.localPosition);
+                p.ir = estaciones[p.estaciones].transform;
+                Debug.Log("pra");
             }
         }
         
@@ -115,15 +117,15 @@ public class MasterCarrera : MonoBehaviour
     }
 
     public void senales(){
-        player p = jugadores[0];
+        player p = MG.jugadores[0];
         
-            for (int i = 0; i < estaciones.Length; i++)
+            for (int i = 0; i < estaciones.Length; i++) //  esto esta para el carajo
             {
-                if(i < p.estaciones){ // los que esten atras
+                if(i > p.estaciones){ // los que esten atras
                        estaciones[i].senal.SetActive(false);
                         estaciones[i].flecha.SetActive(false);
                 }
-                else if(i == p.estaciones){ // El punto
+                if(i == p.estaciones){ // El punto
                     estaciones[i].senal.SetActive(true);
                     if(i < estaciones.Length-1){
                         estaciones[i].flecha.SetActive(true);
@@ -131,11 +133,11 @@ public class MasterCarrera : MonoBehaviour
 
                     }
                 }
-                else if(i+1 == p.estaciones){ // es siguiente
+                if(i+1 == p.estaciones){ // es siguiente
                     estaciones[i].senal.SetActive(true);
                     estaciones[i].flecha.SetActive(false);
-
-                }else{ // los que vienen
+                }
+                if(i < p.estaciones){ // los que vienen
                     estaciones[i].senal.SetActive(false);
                     estaciones[i].flecha.SetActive(false);
                 }
@@ -151,10 +153,3 @@ public class MasterCarrera : MonoBehaviour
     }
     
 }
-[System.Serializable]
-    public class player{
-        public GameObject Player;
-        public int estaciones;
-        public IA_ControlMoto IA;
-        public int posicion;
-    }
