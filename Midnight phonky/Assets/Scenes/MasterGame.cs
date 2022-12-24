@@ -9,6 +9,7 @@ public class MasterGame : MonoBehaviour
     public GameObject CarreraActual;
     [Header("Cosas dentro de carrea")]
     public int contador = 3;
+    public bool contando;
     public void termino(){
         Destroy(CarreraActual);
         foreach (var item in jugadores)
@@ -26,16 +27,22 @@ public class MasterGame : MonoBehaviour
         MasterCarrera mc = CarreraActual.GetComponent<MasterCarrera>();
         mc.MG = this.gameObject.GetComponent<MasterGame>(); 
 
+        contando = true;
+        Invoke("inicio",contador);
+    }
+    private void Update() {
+        if(!contando) return;
+
         foreach (var item in jugadores)
         {
             item.Player.GetComponent<Moto>().activo = false;
-            //item.Player.GetComponent<Moto>().rg.velocity = Vector3.zero;
-            //item.Player.GetComponent<Moto>().rg.rotation = Quaternion.Euler(0,0,0);
-            item.Player.GetComponent<Moto>().rg.WakeUp();
+            item.Player.GetComponent<Moto>().rg.velocity = Vector3.zero;
+            item.Player.GetComponent<Moto>().rg.rotation = Quaternion.Euler(0,0,0);
+            
         }
-        Invoke("inicio",contador);
     }
     void inicio(){
+        contando = false;
         foreach (var item in jugadores)
         {
             item.Player.GetComponent<Moto>().activo = true;
