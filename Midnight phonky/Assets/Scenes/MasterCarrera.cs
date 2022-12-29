@@ -9,11 +9,10 @@ public class MasterCarrera : MonoBehaviour
 
     public GameObject estacionesFather;
     public Transform[] IniPosiciones;
-    estacion[] estaciones;
+    public estacion[] estaciones;
     
     public float radio;
-    [Range(0,1)]
-    public float ventaja = 3;
+    
 
     
     void Start() {
@@ -66,7 +65,7 @@ public class MasterCarrera : MonoBehaviour
         foreach (var item in MG.jugadores)
         {
             ordenaxdistacia();
-            veloMax(item);
+            Ventaja(item);
         }
         
     }
@@ -144,12 +143,16 @@ public class MasterCarrera : MonoBehaviour
             }
         
     }
-    public void veloMax(player p){
-        float x = (p.posicion); // (jugadores.Length+1)  * ventaja
-        float v  = x/5f; // regla de 3
+    public void Ventaja(player p){
+        // float x = (p.posicion); // (jugadores.Length+1)  * ventaja
+        // float v  = x/5f; // regla de 3
         
-        float vv = 1 - v;
-        if (p.IA != null)  p.IA.speed = 1 - (vv * ventaja) ;
+        // float vv = 1 - v;
+        // float formula = 1 - (vv * ventaja);
+        float formula = 1 - ((1 - ( p.posicion/5f)) * MG.ventaja);
+
+        if (p.IA != null)  p.IA.speed =  formula;
+        else p.Player.GetComponent<ControlMotoPlayer>().controlVentaja = formula;
     }
     
 }

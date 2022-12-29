@@ -10,6 +10,8 @@ public class MasterGame : MonoBehaviour
     [Header("Cosas dentro de carrea")]
     public int contador = 3;
     public bool contando;
+    [Range(0,1)]
+    public float ventaja = 3;
     public void termino(){
         Destroy(CarreraActual);
         foreach (var item in jugadores)
@@ -35,9 +37,12 @@ public class MasterGame : MonoBehaviour
 
         foreach (var item in jugadores)
         {
-            item.Player.GetComponent<Moto>().activo = false;
-            item.Player.GetComponent<Moto>().rg.velocity = Vector3.zero;
-            item.Player.GetComponent<Moto>().rg.rotation = Quaternion.Euler(0,0,0);
+            Moto m = item.Player.GetComponent<Moto>(); 
+            m.activo = false;
+            m.rg.velocity = new Vector3(0,m.rg.velocity.y,0);
+            m.rg.rotation = Quaternion.Euler(0,0,0);
+            MasterCarrera c = CarreraActual.GetComponent<MasterCarrera>();
+            if(c.estaciones.Length>0)m.transform.LookAt(c.estaciones[0].gameObject.transform.position);
             
         }
     }

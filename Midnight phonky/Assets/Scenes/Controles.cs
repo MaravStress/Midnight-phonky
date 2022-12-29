@@ -62,6 +62,24 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""R"",
+                    ""type"": ""Button"",
+                    ""id"": ""a7d52a40-e796-487d-a610-e0873a921c41"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""L"",
+                    ""type"": ""Button"",
+                    ""id"": ""f766f2cd-fd3a-4a85-b70f-36b7094cb245"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -262,6 +280,50 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""action"": ""Movimiento"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""af8cd1fa-29af-404a-8d05-7367ba611245"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""R"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6d11e4f9-b505-4a00-90f5-7cfe39f42a91"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""R"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc2556b0-04ce-44aa-a14c-c4018d915b29"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""L"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""449ff19b-1bf5-4c73-84a0-b7dec2703caa"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""L"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -274,6 +336,8 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         m_Player_Accelerar = m_Player.FindAction("Accelerar", throwIfNotFound: true);
         m_Player_Reversa = m_Player.FindAction("Reversa", throwIfNotFound: true);
         m_Player_Movimiento = m_Player.FindAction("Movimiento", throwIfNotFound: true);
+        m_Player_R = m_Player.FindAction("R", throwIfNotFound: true);
+        m_Player_L = m_Player.FindAction("L", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -337,6 +401,8 @@ public partial class @Controles : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Accelerar;
     private readonly InputAction m_Player_Reversa;
     private readonly InputAction m_Player_Movimiento;
+    private readonly InputAction m_Player_R;
+    private readonly InputAction m_Player_L;
     public struct PlayerActions
     {
         private @Controles m_Wrapper;
@@ -345,6 +411,8 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         public InputAction @Accelerar => m_Wrapper.m_Player_Accelerar;
         public InputAction @Reversa => m_Wrapper.m_Player_Reversa;
         public InputAction @Movimiento => m_Wrapper.m_Player_Movimiento;
+        public InputAction @R => m_Wrapper.m_Player_R;
+        public InputAction @L => m_Wrapper.m_Player_L;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -366,6 +434,12 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @Movimiento.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovimiento;
                 @Movimiento.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovimiento;
                 @Movimiento.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMovimiento;
+                @R.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnR;
+                @R.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnR;
+                @R.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnR;
+                @L.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnL;
+                @L.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnL;
+                @L.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnL;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -382,6 +456,12 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @Movimiento.started += instance.OnMovimiento;
                 @Movimiento.performed += instance.OnMovimiento;
                 @Movimiento.canceled += instance.OnMovimiento;
+                @R.started += instance.OnR;
+                @R.performed += instance.OnR;
+                @R.canceled += instance.OnR;
+                @L.started += instance.OnL;
+                @L.performed += instance.OnL;
+                @L.canceled += instance.OnL;
             }
         }
     }
@@ -392,5 +472,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         void OnAccelerar(InputAction.CallbackContext context);
         void OnReversa(InputAction.CallbackContext context);
         void OnMovimiento(InputAction.CallbackContext context);
+        void OnR(InputAction.CallbackContext context);
+        void OnL(InputAction.CallbackContext context);
     }
 }
