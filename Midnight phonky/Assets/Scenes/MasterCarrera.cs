@@ -42,9 +42,9 @@ public class MasterCarrera : MonoBehaviour
         InvokeRepeating("posicion",0.5f,0.5f);
         senales();
     }
-    private void Update()
+    private void LateUpdate()
     {
-        MG.brujula.transform.LookAt(estaciones[MG.jugadores[0].estaciones].transform);
+        MG.brujula.Ir(estaciones[MG.jugadores[0].estaciones].transform);
     }
     public void posicion(){    
     // ordena por estaciones
@@ -72,7 +72,7 @@ public class MasterCarrera : MonoBehaviour
             Ventaja(item);
         }
 
-        // brujula player
+
 
        
 

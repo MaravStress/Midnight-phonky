@@ -16,7 +16,7 @@ public class MasterGame : MonoBehaviour
 
     private void Start()
     {
-        brujula.fisico.SetActive(false);
+        brujula.dejarDeIr();
     }
     public void termino(){
         Destroy(CarreraActual);
@@ -25,7 +25,7 @@ public class MasterGame : MonoBehaviour
             item.estaciones  = 0;
             item.posicion = 0;
         }
-        brujula.fisico.SetActive(false);
+        brujula.dejarDeIr();
     }
     public void z_iniciar_Carrara(int i){
         if(CarreraActual != null){
@@ -61,7 +61,7 @@ public class MasterGame : MonoBehaviour
         {
             item.Player.GetComponent<Moto>().activo = true;
         }
-        brujula.fisico.SetActive(true);
+       
     }
 }
 [System.Serializable]

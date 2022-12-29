@@ -6,18 +6,34 @@ using UnityEngine.UI;
 public class Brujula : MonoBehaviour
 {
 
-    public Transform player;
+    public Transform player, ir;
 
     public Scrollbar brujula;
     public Scrollbar punto;
     public GameObject fisico;
 
 
-    void Update()
+    void LateUpdate()
     {
         
         brujula.value = carculo(player);
-        punto.value = carculo(transform);
+
+        if (ir != null)
+        {
+            transform.LookAt(ir);
+            punto.value = carculo(transform);
+        }
+    }
+    public void Ir(Transform t) {
+        ir = t;
+        fisico.SetActive(true);
+        punto.gameObject.SetActive(true);
+    }
+    public void dejarDeIr()
+    {
+        fisico.SetActive(false);
+        punto.gameObject.SetActive(false);
+        ir = null;
     }
     float carculo(Transform p) {
         float angulo = p.rotation.normalized.eulerAngles.y;
