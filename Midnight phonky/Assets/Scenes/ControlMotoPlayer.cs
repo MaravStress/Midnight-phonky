@@ -22,6 +22,6 @@ public class ControlMotoPlayer : MonoBehaviour
         Vector2 co = c.Player.Movimiento.ReadValue<Vector2>();
         if(c.Player.R.IsPressed() || c.Player.L.IsPressed() ) co.y = 1;
         else co.y = 0;
-        moto.Muevete(new Vector2(co.x,co.y *controlVentaja  )); //
+        moto.Muevete(new Vector2(co.x,co.y *controlVentaja  ));
     }
 }

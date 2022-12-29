@@ -80,6 +80,15 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Start"",
+                    ""type"": ""Button"",
+                    ""id"": ""5ca67c11-b4d4-4364-9442-2d29024529d8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -324,6 +333,17 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                     ""action"": ""L"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""45116e6d-137c-4fec-ae0c-22f94c2ac122"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Start"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -338,6 +358,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         m_Player_Movimiento = m_Player.FindAction("Movimiento", throwIfNotFound: true);
         m_Player_R = m_Player.FindAction("R", throwIfNotFound: true);
         m_Player_L = m_Player.FindAction("L", throwIfNotFound: true);
+        m_Player_Start = m_Player.FindAction("Start", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -403,6 +424,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Movimiento;
     private readonly InputAction m_Player_R;
     private readonly InputAction m_Player_L;
+    private readonly InputAction m_Player_Start;
     public struct PlayerActions
     {
         private @Controles m_Wrapper;
@@ -413,6 +435,7 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         public InputAction @Movimiento => m_Wrapper.m_Player_Movimiento;
         public InputAction @R => m_Wrapper.m_Player_R;
         public InputAction @L => m_Wrapper.m_Player_L;
+        public InputAction @Start => m_Wrapper.m_Player_Start;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -440,6 +463,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @L.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnL;
                 @L.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnL;
                 @L.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnL;
+                @Start.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
+                @Start.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnStart;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -462,6 +488,9 @@ public partial class @Controles : IInputActionCollection2, IDisposable
                 @L.started += instance.OnL;
                 @L.performed += instance.OnL;
                 @L.canceled += instance.OnL;
+                @Start.started += instance.OnStart;
+                @Start.performed += instance.OnStart;
+                @Start.canceled += instance.OnStart;
             }
         }
     }
@@ -474,5 +503,6 @@ public partial class @Controles : IInputActionCollection2, IDisposable
         void OnMovimiento(InputAction.CallbackContext context);
         void OnR(InputAction.CallbackContext context);
         void OnL(InputAction.CallbackContext context);
+        void OnStart(InputAction.CallbackContext context);
     }
 }
