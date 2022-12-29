@@ -42,6 +42,10 @@ public class MasterCarrera : MonoBehaviour
         InvokeRepeating("posicion",0.5f,0.5f);
         senales();
     }
+    private void Update()
+    {
+        MG.brujula.transform.LookAt(estaciones[MG.jugadores[0].estaciones].transform);
+    }
     public void posicion(){    
     // ordena por estaciones
             int esDispo = 1;
@@ -67,7 +71,11 @@ public class MasterCarrera : MonoBehaviour
             ordenaxdistacia();
             Ventaja(item);
         }
-        
+
+        // brujula player
+
+       
+
     }
     void ordenaxdistacia(){
         foreach (var item in MG.jugadores)
