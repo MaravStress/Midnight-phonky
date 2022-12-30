@@ -2425,6 +2425,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: jugadores.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5267638312009293565, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
       propertyPath: m_Name
       value: (Carrera) Barrio barrio

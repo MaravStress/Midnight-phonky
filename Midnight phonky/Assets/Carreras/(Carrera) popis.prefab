@@ -5142,27 +5142,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MG: {fileID: 0}
-  jugadores:
-  - Player: {fileID: 0}
-    estaciones: 0
-    IA: {fileID: 0}
-    posicion: 0
-  - Player: {fileID: 0}
-    estaciones: 0
-    IA: {fileID: 0}
-    posicion: 0
-  - Player: {fileID: 0}
-    estaciones: 0
-    IA: {fileID: 0}
-    posicion: 0
-  - Player: {fileID: 0}
-    estaciones: 0
-    IA: {fileID: 0}
-    posicion: 0
-  - Player: {fileID: 0}
-    estaciones: 0
-    IA: {fileID: 0}
-    posicion: 0
+  jugadores: []
   estacionesFather: {fileID: 8284934882440202937}
   IniPosiciones:
   - {fileID: 8284934882995787445}
@@ -5171,8 +5151,11 @@ MonoBehaviour:
   - {fileID: 8284934881331696579}
   - {fileID: 8284934882867219519}
   - {fileID: 8284934882309956736}
+  estaciones: []
+  competidores_count: 4
+  jefe: 1
+  id_jefe: 4
   radio: 8
-  ventaja: 0.65
 --- !u!1 &8284934883224643555
 GameObject:
   m_ObjectHideFlags: 0

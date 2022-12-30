@@ -5,17 +5,44 @@ using UnityEngine;
 public class MasterCarrera : MonoBehaviour
 {
     public MasterGame MG;
-
+    public List<player> jugadores;
 
     public GameObject estacionesFather;
     public Transform[] IniPosiciones;
     public estacion[] estaciones;
-    
-    public float radio;
-    
+    public int competidores_count = 4;
+    [Header("Soy jefe")]
+    public bool jefe;
+    public int id_jefe;
 
-    
+    public float radio;
+
+
+    void iniciacion() {
+        foreach (var item in MG.jugadores)
+        {
+            item.Player.SetActive(false);
+        }
+        if (jefe)
+        {
+            MG.jugadores[0].Player.SetActive(true);
+            MG.jugadores[id_jefe].Player.SetActive(true);
+            jugadores.Add(MG.jugadores[0]);
+            jugadores.Add(MG.jugadores[id_jefe]);
+        }
+        else {
+            for (int i = 0; i < competidores_count; i++)
+            {
+                MG.jugadores[i].Player.SetActive(true);
+                jugadores.Add(MG.jugadores[i]);
+            }
+        }
+        
+                
+    }
     void Start() {
+        iniciacion();
+
         estaciones = estacionesFather.GetComponentsInChildren<estacion>();
 
         for (int i = 0; i < estaciones.Length; i++)
@@ -29,13 +56,13 @@ public class MasterCarrera : MonoBehaviour
         }
         
         
-        for (int i = 0; i < MG.jugadores.Length; i++)
+        for (int i = 0; i < jugadores.Count; i++)
         {
-            if (MG.jugadores[i].IA != null) {
-                MG.jugadores[i].IA.Destino(estaciones[0].transform.position);
+            if (jugadores[i].IA != null) {
+                jugadores[i].IA.Destino(estaciones[0].transform.position);
             }
             
-            MG.jugadores[i].Player.transform.SetPositionAndRotation(IniPosiciones[i].localPosition,IniPosiciones[i].localRotation);
+            jugadores[i].Player.transform.SetPositionAndRotation(IniPosiciones[i].localPosition,IniPosiciones[i].localRotation);
            
         }
         
@@ -53,7 +80,7 @@ public class MasterCarrera : MonoBehaviour
             for (int i = estaciones.Length; i >= 0; i--)
             {
                  bool ubo = false;
-                foreach (var item in MG.jugadores)
+                foreach (var item in jugadores)
                 {
                     if(item.estaciones == i){
                         item.posicion = esDispo;
@@ -66,7 +93,7 @@ public class MasterCarrera : MonoBehaviour
                 }
             }
     // ordena por distancia
-        foreach (var item in MG.jugadores)
+        foreach (var item in jugadores)
         {
             ordenaxdistacia();
             Ventaja(item);
@@ -78,10 +105,10 @@ public class MasterCarrera : MonoBehaviour
 
     }
     void ordenaxdistacia(){
-        foreach (var item in MG.jugadores)
+        foreach (var item in jugadores)
         {
            
-            foreach (var item2 in MG.jugadores)
+            foreach (var item2 in jugadores)
             {
                 if(item.posicion == item2.posicion && item.Player != item2.Player ){
                     if(distancia(item) > distancia(item2) || item.estaciones < item2.estaciones ){
@@ -115,7 +142,7 @@ public class MasterCarrera : MonoBehaviour
             if (p.IA != null){
                 p.IA.Destino(estaciones[p.estaciones].transform.localPosition);
                 p.ir = estaciones[p.estaciones].transform;
-                Debug.Log("pra");
+              //  Debug.Log("pra");
             }
         }
         

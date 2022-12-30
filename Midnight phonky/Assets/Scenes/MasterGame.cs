@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class MasterGame : MonoBehaviour
 {
-    public player[] jugadores;
-    public GameObject[] Carreras;
+
     public GameObject CarreraActual;
     public Brujula brujula;
+    [Header("Carreras")]
+    public player[] jugadores;
+    public carrera[] Carreras;
+
+
     [Header("Cosas dentro de carrea")]
     public int contador = 3;
+    public int Esta_es_la_carrera = -1;
     public bool contando;
     [Range(0,1)]
     public float ventaja = 3;
@@ -18,7 +23,18 @@ public class MasterGame : MonoBehaviour
     {
         brujula.dejarDeIr();
     }
+    public void z_ir_carrera(int i) {
+        brujula.Ir(Carreras[i].puerta.transform);
+    }
     public void termino(){
+        if (jugadores[0].posicion == 1)
+        {
+            Carreras[Esta_es_la_carrera].gane = true;
+        }
+        foreach (var item in Carreras)
+        {
+            item.puerta.SetActive(true);
+        }
         Destroy(CarreraActual);
         foreach (var item in jugadores)
         {
@@ -26,18 +42,24 @@ public class MasterGame : MonoBehaviour
             item.posicion = 0;
         }
         brujula.dejarDeIr();
+        
     }
     public void z_iniciar_Carrara(int i){
+        Esta_es_la_carrera = i;
         if(CarreraActual != null){
             Debug.LogError("Ya hay una carrera activa, esto no deberia de salir. Doble click para llorar");
             return;
         } 
-        CarreraActual = Instantiate(Carreras[i],Vector3.zero,Quaternion.Euler(0,0,0));
+        CarreraActual = Instantiate(Carreras[i].Carrera,Vector3.zero,Quaternion.Euler(0,0,0));
         MasterCarrera mc = CarreraActual.GetComponent<MasterCarrera>();
         mc.MG = this.gameObject.GetComponent<MasterGame>(); 
 
         contando = true;
         Invoke("inicio",contador);
+        foreach (var item in Carreras)
+        {
+            item.puerta.SetActive(false);
+        }
     }
     private void Update() {
         if(!contando) return;
@@ -72,3 +94,13 @@ public class MasterGame : MonoBehaviour
         public Transform ir;
         public int posicion;
     }
+
+[System.Serializable]
+public class carrera
+{
+    public GameObject Carrera;
+    public GameObject puerta;
+    public bool gane;
+
+
+}
