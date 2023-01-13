@@ -2485,7 +2485,7 @@ Rigidbody:
   m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &50084233
@@ -5412,7 +5412,7 @@ Rigidbody:
   m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &259740238
@@ -5571,7 +5571,7 @@ Rigidbody:
   m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &263424816
@@ -8770,7 +8770,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.757}
+  m_AnchoredPosition: {x: 0, y: -23.75708}
   m_SizeDelta: {x: 0, y: 47.516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &480130478
@@ -12465,7 +12465,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -23.757}
+  m_AnchoredPosition: {x: 0, y: -23.75708}
   m_SizeDelta: {x: 0, y: 47.516}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &554048357
@@ -18370,19 +18370,37 @@ MonoBehaviour:
     ir: {fileID: 0}
     posicion: 0
   Carreras:
-  - Carrera: {fileID: 5267638312009293565, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+  - ZonaYTipo: Sala de pruebas, carrera 1
+    soyjefe: 0
+    Carrera: {fileID: 5267638312009293565, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+    PuntoEnMapa: {fileID: 1216264442}
     puerta: {fileID: 1419957778}
     gane: 0
-  - Carrera: {fileID: 6099760895886460576, guid: aa80525c3869fac4493ed7ba42936ec0, type: 3}
+    Desbloqueado: 0
+  - ZonaYTipo: Sala de pruebas, carrera 2
+    soyjefe: 0
+    Carrera: {fileID: 6099760895886460576, guid: aa80525c3869fac4493ed7ba42936ec0, type: 3}
+    PuntoEnMapa: {fileID: 1015758297}
     puerta: {fileID: 1194874670}
     gane: 0
-  - Carrera: {fileID: 8284934883189389628, guid: 8812fda64676536418be8f3d1784c612, type: 3}
+    Desbloqueado: 0
+  - ZonaYTipo: (Jefe) Sala de pruebas, carrera 3
+    soyjefe: 1
+    Carrera: {fileID: 8284934883189389628, guid: 8812fda64676536418be8f3d1784c612, type: 3}
+    PuntoEnMapa: {fileID: 806927997}
     puerta: {fileID: 1524818522}
     gane: 0
+    Desbloqueado: 0
   contador: 3
   Esta_es_la_carrera: -1
   contando: 0
   ventaja: 0.307
+  DesbloqueaCarrera:
+    m_PersistentCalls:
+      m_Calls: []
+  UnJefeTeEspera:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &956621643
 GameObject:
   m_ObjectHideFlags: 0
@@ -18476,7 +18494,7 @@ Rigidbody:
   m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &956621650
@@ -23824,7 +23842,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 1
-  p: {fileID: 956621650}
 --- !u!1 &1216264442
 GameObject:
   m_ObjectHideFlags: 0
@@ -27039,7 +27056,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 0
-  p: {fileID: 956621650}
 --- !u!1 &1445074413
 GameObject:
   m_ObjectHideFlags: 0
@@ -27669,7 +27685,7 @@ GameObject:
   - component: {fileID: 1524818525}
   - component: {fileID: 1524818524}
   m_Layer: 0
-  m_Name: Carrera (3)
+  m_Name: Carrera Jefe(3)
   m_TagString: Untagged
   m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -27717,7 +27733,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2
-  p: {fileID: 956621650}
 --- !u!1 &1533220818
 GameObject:
   m_ObjectHideFlags: 0
@@ -27754,7 +27769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.30004883, y: -0.00079345703}
+  m_AnchoredPosition: {x: 0.30004883, y: -0.0007324219}
   m_SizeDelta: {x: 0.6999512, y: 0.00012207031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1533220823
@@ -28456,7 +28471,7 @@ Rigidbody:
   m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
 --- !u!114 &1604354986
@@ -33304,7 +33319,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.19995117, y: -0.00079345703}
+  m_AnchoredPosition: {x: 0.19970703, y: -0.0007324219}
   m_SizeDelta: {x: -0.30004883, y: 0.00012207031}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1977721115

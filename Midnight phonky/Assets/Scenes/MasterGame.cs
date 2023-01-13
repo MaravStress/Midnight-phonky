@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MasterGame : MonoBehaviour
 {
@@ -18,10 +19,14 @@ public class MasterGame : MonoBehaviour
     public bool contando;
     [Range(0,1)]
     public float ventaja = 3;
-
+     [Header("Eventos")]
+    public UnityEvent DesbloqueaCarrera;
+    public UnityEvent UnJefeTeEspera;
     private void Start()
     {
         brujula.dejarDeIr();
+        Load();
+        ActualizarMapa();
     }
     public void z_ir_carrera(int i) {
         brujula.Ir(Carreras[i].puerta.transform);
@@ -42,6 +47,7 @@ public class MasterGame : MonoBehaviour
             item.posicion = 0;
         }
         brujula.dejarDeIr();
+        ActualizarMapa();
         
     }
     public void z_iniciar_Carrara(int i){
@@ -85,6 +91,37 @@ public class MasterGame : MonoBehaviour
         }
        
     }
+
+    public void ActualizarMapa(){
+        Carreras[0].Desbloqueado = true; // la carrera 1 siempre esta disponible
+
+        bool superado = true;
+        foreach (var item in Carreras)  
+        {
+            // Desactivamos las que no estan activas 
+            if(item.Desbloqueado){  
+                item.PuntoEnMapa.SetActive(true);
+            }else{
+                item.PuntoEnMapa.SetActive(false);
+            }
+            // Activamos o desactivamos al jefe
+            if(!item.gane && item.soyjefe == false) superado = false; //solo verifica las carreras, los jefes no
+
+            if(item.soyjefe){
+                 item.PuntoEnMapa.SetActive(superado);
+                 item.puerta.SetActive(superado);
+                 item.Desbloqueado = superado;
+            }
+        }
+        
+    }
+
+    public void Save(){
+        
+    }
+    public void Load(){
+        
+    }
 }
 [System.Serializable]
     public class player{
@@ -98,9 +135,12 @@ public class MasterGame : MonoBehaviour
 [System.Serializable]
 public class carrera
 {
+    public string ZonaYTipo;
+    public bool soyjefe;
     public GameObject Carrera;
+    public GameObject PuntoEnMapa;
     public GameObject puerta;
     public bool gane;
-
-
+    public bool Desbloqueado;
+   
 }
