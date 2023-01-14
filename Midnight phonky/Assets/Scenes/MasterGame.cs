@@ -31,11 +31,8 @@ public class MasterGame : MonoBehaviour
     public void z_ir_carrera(int i) {
         brujula.Ir(Carreras[i].puerta.transform);
     }
-    public void termino(){
-        if (jugadores[0].posicion == 1)
-        {
-            Carreras[Esta_es_la_carrera].gane = true;
-        }
+    public void z_Salir_De_Carrera(){
+        
         foreach (var item in Carreras)
         {
             item.puerta.SetActive(true);
@@ -48,7 +45,21 @@ public class MasterGame : MonoBehaviour
         }
         brujula.dejarDeIr();
         ActualizarMapa();
+    }
+    public void termino(){
+        if (jugadores[0].posicion == 1)
+        {
+            Carreras[Esta_es_la_carrera].gane = true;
+        }
+        z_Salir_De_Carrera();
         
+    }
+    public void z_Reinicio_de_carrera(){
+        z_Salir_De_Carrera();
+        Invoke("rc",0.1f);
+    }
+    void rc(){
+        z_iniciar_Carrara(Esta_es_la_carrera);
     }
     public void z_iniciar_Carrara(int i){
         Esta_es_la_carrera = i;
