@@ -8176,6 +8176,10 @@ MonoBehaviour:
   Master: {fileID: 24100000, guid: c64b652f80ee1e546aaad4c0d19eb978, type: 2}
   play: {fileID: 24500006, guid: c64b652f80ee1e546aaad4c0d19eb978, type: 2}
   pausa: {fileID: -4374150693211427826, guid: c64b652f80ee1e546aaad4c0d19eb978, type: 2}
+  bgMusica: {fileID: 0}
+  RadioActual: 0
+  cola: []
+  Radios: []
 --- !u!43 &445611297
 Mesh:
   m_ObjectHideFlags: 0
@@ -34142,7 +34146,7 @@ GameObject:
   - component: {fileID: 1895247877}
   - component: {fileID: 1895247878}
   m_Layer: 0
-  m_Name: Musica de fondo
+  m_Name: bg Musica
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
