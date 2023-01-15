@@ -2426,8 +2426,36 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: conversacionStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: idConversacionEnd
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: conversacionEndWin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: idConversacionStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: conversacionEndLoser
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: idConversacionEndWin
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
       propertyPath: jugadores.Array.size
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5267638312009293539, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
+      propertyPath: idConversacionEndLoser
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5267638312009293565, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
       propertyPath: m_Name

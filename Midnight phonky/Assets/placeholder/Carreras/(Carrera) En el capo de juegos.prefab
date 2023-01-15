@@ -881,6 +881,12 @@ MonoBehaviour:
   - {fileID: 5267638311133922113}
   estaciones: []
   competidores_count: 4
+  conversacionStart: 1
+  idConversacionStart: 2
+  conversacionEndWin: 0
+  idConversacionEndWin: 0
+  conversacionEndLoser: 1
+  idConversacionEndLoser: 1
   jefe: 0
   id_jefe: 0
   radio: 8

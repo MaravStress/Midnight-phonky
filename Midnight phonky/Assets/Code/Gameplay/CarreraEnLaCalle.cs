@@ -5,6 +5,8 @@ public class CarreraEnLaCalle : MonoBehaviour
     public int id;
      MasterGame MG;
      ControlMotoPlayer p;
+     public bool conversacion = true;
+     public int idConversacion = 3;
     private void Start() {
         MG = FindObjectOfType<MasterGame>();
         p = FindObjectOfType<ControlMotoPlayer>();
@@ -19,6 +21,7 @@ public class CarreraEnLaCalle : MonoBehaviour
             MG.DesbloqueaCarrera.Invoke();
             MG.Carreras[id].Desbloqueado = true;
             MG.ActualizarMapa();
+            FindObjectOfType<Conversacion>().Z_ShowPredefinidas(3);
         }
         
         p.carrera = GetComponent<CarreraEnLaCalle>();

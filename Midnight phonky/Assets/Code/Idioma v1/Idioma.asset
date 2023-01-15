@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 036168f0fba59b04785bb40268723b95, type: 3}
+  m_Name: Idioma
+  m_EditorClassIdentifier: 
+  idioma: 0
+  traduccionActual: {fileID: 4900000, guid: 9988aa7a9e42fdc4e89bcfbce8b36246, type: 3}
+  varTranslate:
+  - id: 1
+    esp: Jugar
+    ing: "Play\r"
+  - id: 2
+    esp: Pausa
+    ing: "Pause\r"
+  - id: 3
+    esp: volver
+    ing: "Back\r"
+  - id: 4
+    esp: salir
+    ing: "Go home\r"
+  - id: 5
+    esp: continuar
+    ing: "Continue\r"
+  - id: 6
+    esp: Nueva partida
+    ing: "New game\r"
+  - id: 7
+    esp: Cargar partida
+    ing: "Load game\r"
+  - id: 8
+    esp: Cargando
+    ing: "Loading\r"
+  - id: 9
+    esp: Creditos
+    ing: "Credits\r"
+  - id: 10
+    esp: "Contrase\xF1a"
+    ing: "pass\r"
+  - id: 11
+    esp: "Hig\xFCey"
+    ing: "Hig\xFCey\r"
+  - id: 12
+    esp: "G\xFCira"
+    ing: "G\xFCira\r"
+  - id: 13
+    esp: "\xE1\xE9\xED\xF3\xFA\xFC\xF1\xD1"
+    ing: "\xE1\xE9\xED\xF3\xFA\xFC\xF1\xD1\r"

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: a02e382670b430b4d9a7b6fda6ce6b7a
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - confi: {fileID: 11400000, guid: d2f147dbba0a1174e8f2d130aa41601b, type: 2}
+  - text: {instanceID: 0}
+  - textMesh: {instanceID: 0}
+  - textMeshGUI: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

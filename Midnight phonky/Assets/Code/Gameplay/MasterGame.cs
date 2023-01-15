@@ -52,7 +52,7 @@ public class MasterGame : MonoBehaviour
             Carreras[Esta_es_la_carrera].gane = true;
         }
         z_Salir_De_Carrera();
-        
+        Save();
     }
     public void z_Reinicio_de_carrera(){
         z_Salir_De_Carrera();
@@ -124,14 +124,29 @@ public class MasterGame : MonoBehaviour
                  item.Desbloqueado = superado;
             }
         }
-        
+        Save();
     }
-
+    [Header("Save and Load")]
+    public string idCarreraSave="Carrera";
     public void Save(){
-        
+        for (int i = 0; i < Carreras.Length; i++)
+        {
+            PlayerPrefs.SetInt(idCarreraSave+"_gane_"+i.ToString(),Bool_A_Int(Carreras[i].gane));
+            PlayerPrefs.SetInt(idCarreraSave+"_Desbloqueado_"+i.ToString(),Bool_A_Int(Carreras[i].Desbloqueado));
+        }
+    }
+    bool Int_A_Bool(int i){
+        return (i != 0);
+    }
+    int Bool_A_Int(bool i){
+        if(i)  return 1; else return  0;
     }
     public void Load(){
-        
+        for (int i = 0; i < Carreras.Length; i++)
+        {
+            Carreras[i].gane = Int_A_Bool(PlayerPrefs.GetInt(idCarreraSave+"_gane_"+i.ToString(),0));
+            Carreras[i].Desbloqueado = Int_A_Bool(PlayerPrefs.GetInt(idCarreraSave+"_Desbloqueado_"+i.ToString(),0));
+        }
     }
 }
 [System.Serializable]

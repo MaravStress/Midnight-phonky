@@ -11,6 +11,14 @@ public class MasterCarrera : MonoBehaviour
     public Transform[] IniPosiciones;
     public estacion[] estaciones;
     public int competidores_count = 4;
+    [Header("conversacion")]
+     Conversacion conversacion;
+    public bool conversacionStart;
+    public int idConversacionStart;
+    public bool conversacionEndWin;
+    public int idConversacionEndWin;
+    public bool conversacionEndLoser;
+    public int idConversacionEndLoser;
     [Header("Soy jefe")]
     public bool jefe;
     public int id_jefe;
@@ -68,6 +76,8 @@ public class MasterCarrera : MonoBehaviour
         
         InvokeRepeating("posicion",0.5f,0.5f);
         senales();
+        conversacion = FindObjectOfType<Conversacion>();
+        if(conversacionStart) conversacion.Z_ShowPredefinidas(idConversacionStart);
     }
     private void LateUpdate()
     {
@@ -131,8 +141,12 @@ public class MasterCarrera : MonoBehaviour
     public void Entro(player p){
         posicion();
         //Debug.Log("entro");
-        if(p.estaciones >=  estaciones.Length-1){
+        if(p.estaciones >=  estaciones.Length-1){ // termino la carrera
             if(p.IA == null){
+                if(p.posicion == 1)
+                    if(conversacionEndWin) conversacion.Z_ShowPredefinidas(idConversacionEndWin);
+                else
+                    if(conversacionEndLoser) conversacion.Z_ShowPredefinidas(idConversacionEndLoser);
                 MG.termino();
             } 
             return;
