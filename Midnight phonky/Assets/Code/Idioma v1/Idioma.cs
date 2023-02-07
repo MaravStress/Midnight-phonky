@@ -83,7 +83,7 @@ public class Idioma : ScriptableObject
 
         string nivel_a = translate.text.ToString(System.Globalization.CultureInfo.InvariantCulture).Replace(';', celda).Replace('\n',fila);
 
-        Debug.Log(nivel_a);
+        //Debug.Log(nivel_a);
 
         string[] filas_string = nivel_a.Split(fila);
         foreach (var item in filas_string)

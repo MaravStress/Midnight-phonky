@@ -104,7 +104,7 @@ public class MasterGame : MonoBehaviour
     }
 
     public void ActualizarMapa(){
-        Carreras[0].Desbloqueado = true; // la carrera 1 siempre esta disponible
+      if(Carreras.Length > 0)  Carreras[0].Desbloqueado = true; // la carrera 1 siempre esta disponible
 
         bool superado = true;
         foreach (var item in Carreras)  

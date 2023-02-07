@@ -10,7 +10,7 @@ public class Start_Idioma : MonoBehaviour
     void Awake()
     {
         idioma.cargarTraduccion(idioma.traduccionActual);
-        Debug.Log("traducciones cargadas del obj: "+name+" El archivo:"+idioma.traduccionActual);
+       // Debug.Log("traducciones cargadas del obj: "+name+" El archivo:"+idioma.traduccionActual);
     }
     
 }
