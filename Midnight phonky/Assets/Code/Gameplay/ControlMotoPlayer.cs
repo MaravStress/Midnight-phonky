@@ -31,12 +31,7 @@ public class ControlMotoPlayer : MonoBehaviour
     void Update() {
         if (c == null) return;
         Vector2 co = c.Player.Movimiento.ReadValue<Vector2>();
-        if(c.Player.R.IsPressed() || c.Player.L.IsPressed() ){co.y = 1;
-       corre = true;
-        }else{
-            co.y = 0;
-             corre = false;
-        } 
+       
         moto.Muevete(new Vector2(co.x,co.y *controlVentaja  ));
 
         if (mg.CarreraActual != null) return;
