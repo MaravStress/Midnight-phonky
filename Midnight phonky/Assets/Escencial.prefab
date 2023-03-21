@@ -755,7 +755,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5756777121486345430}
-  m_LocalRotation: {x: 0.38268343, y: 0.000000022481224, z: -0.000000009312028, w: 0.92387956}
+  m_LocalRotation: {x: 0.38268343, y: -0.000000022481213, z: 0.000000009312022, w: 0.92387956}
   m_LocalPosition: {x: 0, y: 10, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1074,28 +1074,7 @@ MonoBehaviour:
     IA: {fileID: 5756777121983450126}
     ir: {fileID: 0}
     posicion: 0
-  Carreras:
-  - ZonaYTipo: Sala de pruebas, carrera 1
-    soyjefe: 0
-    Carrera: {fileID: 5267638312009293565, guid: e1263ee7edf1bdb4389983064ddd87e3, type: 3}
-    PuntoEnMapa: {fileID: 5756777122960408516}
-    puerta: {fileID: 0}
-    gane: 0
-    Desbloqueado: 0
-  - ZonaYTipo: Sala de pruebas, carrera 2
-    soyjefe: 0
-    Carrera: {fileID: 6099760895886460576, guid: aa80525c3869fac4493ed7ba42936ec0, type: 3}
-    PuntoEnMapa: {fileID: 5756777121696709351}
-    puerta: {fileID: 0}
-    gane: 0
-    Desbloqueado: 0
-  - ZonaYTipo: (Jefe) Sala de pruebas, carrera 3
-    soyjefe: 1
-    Carrera: {fileID: 8284934883189389628, guid: 8812fda64676536418be8f3d1784c612, type: 3}
-    PuntoEnMapa: {fileID: 5756777121485715779}
-    puerta: {fileID: 0}
-    gane: 0
-    Desbloqueado: 0
+  Carreras: []
   contador: 3
   Esta_es_la_carrera: -1
   contando: 0
@@ -1495,8 +1474,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5756777121602202191}
-  m_LocalRotation: {x: 0.38268343, y: 0.000000022481224, z: -0.000000009312028, w: 0.92387956}
-  m_LocalPosition: {x: 0, y: 10, z: -10}
+  m_LocalRotation: {x: 0.03247798, y: 0.89213866, z: -0.06498321, w: 0.44588223}
+  m_LocalPosition: {x: -31.378723, y: 41.73, z: -142.2883}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1535,7 +1514,7 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
@@ -3811,7 +3790,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4044717213e31446939f7bd49c896ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 0, y: 0, z: 0}
+  m_TrackedObjectOffset: {x: 0, y: 1.1, z: 0}
   m_LookaheadTime: 0
   m_LookaheadSmoothing: 0
   m_LookaheadIgnoreY: 0
@@ -3839,7 +3818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 1
-  m_FollowOffset: {x: 0, y: 10, z: -10}
+  m_FollowOffset: {x: 0, y: 2.03, z: -6.35}
   m_XDamping: 2
   m_YDamping: 2
   m_ZDamping: 2
@@ -5767,6 +5746,7 @@ GameObject:
   - component: {fileID: 5756777122617714211}
   - component: {fileID: 5756777122617714210}
   - component: {fileID: 5756777122617714213}
+  - component: {fileID: 5780901147651540256}
   m_Layer: 5
   m_Name: Izquierda
   m_TagString: Untagged
@@ -5845,6 +5825,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/a
+--- !u!114 &5780901147651540256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756777122617714214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/w
 --- !u!1 &5756777122618098435
 GameObject:
   m_ObjectHideFlags: 0
@@ -7766,6 +7759,7 @@ GameObject:
   - component: {fileID: 5756777123247018217}
   - component: {fileID: 5756777123247018215}
   - component: {fileID: 5756777123247018212}
+  - component: {fileID: 5754115269581017299}
   m_Layer: 5
   m_Name: derecha
   m_TagString: Untagged
@@ -7844,6 +7838,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ControlPath: <Keyboard>/d
+--- !u!114 &5754115269581017299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5756777123247018220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d54531977ecb194c95e2d3aa7a5d72a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ControlPath: <Keyboard>/w
 --- !u!1 &5756777123325987898
 GameObject:
   m_ObjectHideFlags: 0

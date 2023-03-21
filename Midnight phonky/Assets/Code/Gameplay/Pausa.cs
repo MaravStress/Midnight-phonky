@@ -10,6 +10,7 @@ public class Pausa : MonoBehaviour
     public AudioMixer Master;
     public AudioMixerSnapshot play,pausa;
     [Header("Radio")]
+    public bool OnRadio;
     public AudioSource bgMusica;
     public int RadioActual;
     public List<AudioClip> cola;
@@ -23,6 +24,7 @@ public class Pausa : MonoBehaviour
 
     private void Start() {
         QuitarPausa();
+        if (!OnRadio) return;
         InvokeRepeating("Update_cancion",2,2);
     }
     public void Pausar(){
@@ -56,6 +58,7 @@ public class Pausa : MonoBehaviour
     }
 
     public void Cambio_radio(int i){
+        if (!OnRadio) return;
         RadioActual = i; // cambiamos la radio
         cola.Clear(); // limpiamos la cola
         foreach (var item in Radios[i].Canciones) // cargamos la cola
@@ -66,7 +69,8 @@ public class Pausa : MonoBehaviour
     }
     
     void Update_cancion(){
-        if(!bgMusica.isPlaying ){
+        if (!OnRadio) return;
+        if (!bgMusica.isPlaying ){
             if(cola.Count > 0){
                 AudioClip clip = cola[0];
                 bgMusica.PlayOneShot(clip);
